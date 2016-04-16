@@ -3,7 +3,7 @@ require 'mechanize'
 class Kumamoto
   def initialize
     agent = Mechanize.new
-    agent.read_timeout = 60
+    agent.read_timeout = 5
     @site = agent.get('http://www.city.kumamoto.jp/default.aspx?site=1')
   rescue
   end
@@ -36,7 +36,7 @@ end
 class Kisyo
   def initialize
     agent = Mechanize.new
-    agent.read_timeout = 60
+    agent.read_timeout = 5
     @site = agent.get('http://www.jma.go.jp/jp/quake/quake_singen_index.html')
   rescue
   end
@@ -78,7 +78,7 @@ end
 class Suido
   def initialize
     agent = Mechanize.new
-    agent.read_timeout = 60
+    agent.read_timeout = 5
     @site = agent.get('http://www.kumamoto-waterworks.jp/?page_id=2880')
   rescue
   end
@@ -146,21 +146,31 @@ class Html
   end
 
   def export_info
-    p earth_quake
+    html = File.open('index.html', 'r')
+    doc = Nokogiri::HTML.parse(html)
 
-    @file.gsub!('{{updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
 
     if @earth_quake_info
       @file.gsub!('{{kisyo}}', earth_quake)
       @file.gsub!('{{earthquake_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+    else
+      @file.gsub!('{{kisyo}}', doc.search('[@class="area earthquake"]')[0].to_s)
     end
+
+
     if @kumamoto_info
       @file.gsub!('{{kumamotoshi}}', kumamotoshi)
       @file.gsub!('{{cityinfo_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+    else
+      @file.gsub!('{{kumamotoshi}}', doc.search('[@class="area cityinfo"]')[0].to_s)
     end
+
+
     if @suido
       @file.gsub!('{{suido}}', suido)
       @file.gsub!('{{suido_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+    else
+      @file.gsub!('{{suido}}', doc.search('[@class="area waterworks"]')[0].to_s)
     end
   end
 
@@ -172,7 +182,7 @@ class Html
   end
 
   def earth_quake
-    html = '<div class="area">
+    html = '<div class="area earthquake">
               <div class="areaTitle">地震情報（震源に関する情報）<span class="u-warn" style="font-size:13px;"> 最終更新日時:{{earthquake_last_updated_at}}</span></div>
               <div class="area-info">
                 <div class="area-info__message">
@@ -190,7 +200,7 @@ class Html
   end
 
   def kumamotoshi
-    html = '<div class="area">
+    html = '<div class="area cityinfo">
               <div class="areaTitle">熊本市<span class="u-warn" style="font-size:13px;"> 最終更新日時:{{cityinfo_last_updated_at}}</span></div>
                 <div class="area-info">'
     h = ''
@@ -208,7 +218,7 @@ class Html
   end
 
   def suido
-    html = '<div class="area">
+    html = '<div class="area waterworks">
               <div class="areaTitle">上下水道局<span class="u-warn" style="font-size:13px;"> 最終更新日時:{{suido_last_updated_at}}</span></div>
                 <div class="area-info">'
     h = ''
