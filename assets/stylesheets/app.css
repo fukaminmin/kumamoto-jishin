@@ -20,6 +20,15 @@ body {
   text-align: center;
   color: #000; }
 
+.twitter-share {
+  font-size: 13px;
+  margin-top: 10px; }
+  .twitter-share span {
+    margin-right: 5px;
+    position: relative;
+    top: -3px;
+    vertical-align: middle; }
+
 .area {
   margin-top: 40px;
   font-size: 15px; }
@@ -45,6 +54,15 @@ body {
 .image-wrap {
   margin-top: 40px;
   text-align: left; }
+
+.twitter-wrapper {
+  margin-top: 40px; }
+  .twitter-wrapper .twitter-title {
+    font-size: 15px; }
+
+#twitter-widget-0 {
+  border: solid 1px #ccc !important;
+  border-radius: 2px; }
 
 @media screen and (max-width: 768px) {
   .area {
