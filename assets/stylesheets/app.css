@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  background: #fff;
+  color: #666;
+  font-size: 18px;
+  line-height: 1.6; }
+
+.u-warn {
+  color: #fc2e32; }
+
+#content {
+  padding: 0 10px;
+  width: 95%;
+  max-width: 980px;
+  margin: 0 auto; }
+
+.header {
+  text-align: center;
+  color: #000; }
+
+.area {
+  margin-top: 40px;
+  font-size: 15px; }
+  .area .areaTitle {
+    font-size: 20px;
+    color: #666;
+    font-weight: bold; }
+  .area .area-info {
+    max-height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: solid 1px #666; }
+    .area .area-info .day {
+      font-weight: bold;
+      margin-top: 20px; }
+    .area .area-info .title {
+      color: #fc2e32; }
+    .area .area-info .message {
+      font-size: 13px; }
+  .area:first-of-type {
+    margin-top: 0px; }
+
+@media screen and (max-width: 768px) {
+  .area {
+    margin-top: 40px;
+    font-size: 15px; }
+    .area .areaTitle {
+      font-size: 20px;
+      color: #666;
+      font-weight: bold; }
+    .area .area-info {
+      padding: 10px;
+      border: solid 1px #666; }
+      .area .area-info .day {
+        font-weight: bold;
+        margin-top: 20px; }
+      .area .area-info .title {
+        color: #fc2e32; }
+      .area .area-info .message {
+        font-size: 13px; }
+    .area:first-of-type {
+      margin-top: 0px; } }
