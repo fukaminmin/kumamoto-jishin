@@ -24,22 +24,18 @@
 <header class="header">
   <h1 style="font-size:18px;">熊本地震 情報掲示板</h1>
   <h2>この掲示板は<span class="u-warn">熊本市</span>に必要な気象庁や県、市の情報をリアルタイムにまとめていきます。</h2>
-  <div>※随時更新受付中</div>
+  <div class="update-time u-warn" style="padding:10px;font-size:15px;text-align:center;">
+		更新日時：{{updated_at}}
+	</div>
+
 </header>
 <div id="content">
 
 <div class="container">
 	<div class="update-time u-warn" style="padding:10px;font-size:15px;text-align:center;">
-    <br>地震情報の最終更新日時: {{earthquake_last_updated_at}}
 	</div>
 	{{kisyo}}
-  <div class="update-time u-warn" style="padding:10px;font-size:15px;text-align:center;">
-    <br>熊本市災害情報の最終更新日時: {{cityinfo_last_updated_at}}
-  </div>
 	{{kumamotoshi}}
-  <div class="update-time u-warn" style="padding:10px;font-size:15px;text-align:center;">
-    <br>熊本水道局の最終更新日時: {{suido_last_updated_at}}
-  </div>
 	{{suido}}
 
 	<div style="margin-top: 40px;">

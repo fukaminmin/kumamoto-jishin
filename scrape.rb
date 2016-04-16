@@ -148,6 +148,8 @@ class Html
   def export_info
     p earth_quake
 
+    @file.gsub!('{{updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+
     if @earth_quake_info
       @file.gsub!('{{kisyo}}', earth_quake)
       @file.gsub!('{{earthquake_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
@@ -171,7 +173,7 @@ class Html
 
   def earth_quake
     html = '<div class="area">
-              <div class="areaTitle">地震情報（震源に関する情報）</div>
+              <div class="areaTitle">地震情報（震源に関する情報）<span class="u-warn" style="font-size:13px;"> 最終更新日時:{{earthquake_last_updated_at}}</span></div>
               <div class="area-info">
                 <div class="area-info__message">
                   <div class="title">地震情報（震源に関する情報）</div>'
@@ -189,7 +191,7 @@ class Html
 
   def kumamotoshi
     html = '<div class="area">
-              <div class="areaTitle">熊本市</div>
+              <div class="areaTitle">熊本市<span class="u-warn" style="font-size:13px;"> 最終更新日時:{{cityinfo_last_updated_at}}</span></div>
                 <div class="area-info">'
     h = ''
     @kumamoto_info.each do |i|
@@ -207,7 +209,7 @@ class Html
 
   def suido
     html = '<div class="area">
-              <div class="areaTitle">上下水道局</div>
+              <div class="areaTitle">上下水道局<span class="u-warn" style="font-size:13px;"> 最終更新日時:{{suido_last_updated_at}}</span></div>
                 <div class="area-info">'
     h = ''
     @suido.each do |i|
