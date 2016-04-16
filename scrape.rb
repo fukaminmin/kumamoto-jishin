@@ -149,10 +149,11 @@ class Html
     html = File.open('index.html', 'r')
     doc = Nokogiri::HTML.parse(html)
 
+    ENV['TZ'] = 'Asia/Tokyo'
 
     if @earth_quake_info
       @file.gsub!('{{kisyo}}', earth_quake)
-      @file.gsub!('{{earthquake_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+      @file.gsub!('{{earthquake_last_updated_at}}', Time.now.strftime('%Y年%m月%d日 %H時%M分').to_s)
     else
       @file.gsub!('{{kisyo}}', doc.search('[@class="area earthquake"]')[0].to_s)
     end
@@ -160,7 +161,7 @@ class Html
 
     if @kumamoto_info
       @file.gsub!('{{kumamotoshi}}', kumamotoshi)
-      @file.gsub!('{{cityinfo_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+      @file.gsub!('{{cityinfo_last_updated_at}}', Time.now.strftime('%Y年%m月%d日 %H時%M分').to_s)
     else
       @file.gsub!('{{kumamotoshi}}', doc.search('[@class="area cityinfo"]')[0].to_s)
     end
@@ -168,7 +169,7 @@ class Html
 
     if @suido
       @file.gsub!('{{suido}}', suido)
-      @file.gsub!('{{suido_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+      @file.gsub!('{{suido_last_updated_at}}', Time.now.strftime('%Y年%m月%d日 %H時%M分').to_s)
     else
       @file.gsub!('{{suido}}', doc.search('[@class="area waterworks"]')[0].to_s)
     end
