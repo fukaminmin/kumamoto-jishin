@@ -126,6 +126,7 @@ class Html
     @file.gsub!('{{kisyo}}', earth_quake)
     @file.gsub!('{{kumamotoshi}}', kumamotoshi)
     @file.gsub!('{{suido}}', suido)
+    @file.gsub!('{{last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
   end
 
   def write_html
@@ -190,3 +191,16 @@ class Html
 end
 
 p Html.new.write_html
+
+
+Aws::S3::Client.new(
+  access_key_id: creds['access_key_id'],
+  secret_access_key: creds['secret_access_key'],
+  region: 'ap-northeast-1'
+)
+
+s3.put_object(
+  bucket: 'staging.kumamoto-jishin.info',
+  body: File.open('index.html'),
+  key: 'index.html'
+)
