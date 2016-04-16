@@ -2,9 +2,14 @@ require 'mechanize'
 
 class Kumamoto
   def initialize
-    @site = Mechanize
-              .new
-              .get('http://www.city.kumamoto.jp/default.aspx?site=1')
+    agent = Mechanize.new
+    agent.read_timeout = 60
+    @site = agent.get('http://www.city.kumamoto.jp/default.aspx?site=1')
+  rescue
+  end
+
+  def success?
+    !@site.nil?
   end
 
   def info_area
@@ -14,6 +19,7 @@ class Kumamoto
   end
 
   def info_hash
+    nil unless @site
     array = []
     info_area.each do |area|
       tmp_hash = {}
@@ -29,7 +35,14 @@ end
 
 class Kisyo
   def initialize
-    @site = Mechanize.new.get('http://www.jma.go.jp/jp/quake/quake_singen_index.html')
+    agent = Mechanize.new
+    agent.read_timeout = 60
+    @site = agent.get('http://www.jma.go.jp/jp/quake/quake_singen_index.html')
+  rescue
+  end
+
+  def success?
+    !@site.nil?
   end
 
   def info_area
@@ -45,6 +58,7 @@ class Kisyo
   end
 
   def info_hash
+    nil unless @site
     array = []
     info_area.each do |area|
       next if area.text.include?('情報発表日時')
@@ -63,7 +77,14 @@ end
 
 class Suido
   def initialize
-    @site = Mechanize.new.get('http://www.kumamoto-waterworks.jp/?page_id=2880')
+    agent = Mechanize.new
+    agent.read_timeout = 60
+    @site = agent.get('http://www.kumamoto-waterworks.jp/?page_id=2880')
+  rescue
+  end
+
+  def success?
+    !@site.nil?
   end
 
   def e_links
@@ -83,13 +104,16 @@ class Suido
   end
 
   def info_hash
+    nil unless @site
     array = []
     e_links.each do |link|
 
       p link
 
       begin
-        page = Mechanize.new.get(link)
+        agent = Mechanize.new
+        agent.read_timeout = 60
+        page = agent.get(link)
       rescue Timeout::Error
         retry
 
@@ -123,10 +147,19 @@ class Html
 
   def export_info
     p earth_quake
-    @file.gsub!('{{kisyo}}', earth_quake)
-    @file.gsub!('{{kumamotoshi}}', kumamotoshi)
-    @file.gsub!('{{suido}}', suido)
-    @file.gsub!('{{last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+
+    if @earth_quake_info
+      @file.gsub!('{{kisyo}}', earth_quake)
+      @file.gsub!('{{earthquake_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+    end
+    if @kumamoto_info
+      @file.gsub!('{{kumamotoshi}}', kumamotoshi)
+      @file.gsub!('{{cityinfo_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+    end
+    if @suido
+      @file.gsub!('{{suido}}', suido)
+      @file.gsub!('{{suido_last_updated_at}}', (Time.now + 9*60*60).strftime('%Y年%m月%d日 %H時%M分').to_s)
+    end
   end
 
   def write_html
@@ -192,10 +225,10 @@ end
 
 p Html.new.write_html
 
-
-Aws::S3::Client.new(
-  access_key_id: creds['access_key_id'],
-  secret_access_key: creds['secret_access_key'],
+require 'aws-sdk'
+s3 = Aws::S3::Client.new(
+  access_key_id: 'AKIAIQWKX2WYP6FHN2RA',
+  secret_access_key: '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',
   region: 'ap-northeast-1'
 )
 

@@ -30,12 +30,16 @@
 
 <div class="container">
 	<div class="update-time u-warn" style="padding:10px;font-size:15px;text-align:center;">
-    <br>最終更新日時：{{last_updated_at}}
+    <br>地震情報の最終更新日時: {{earthquake_last_updated_at}}
 	</div>
 	{{kisyo}}
-
+  <div class="update-time u-warn" style="padding:10px;font-size:15px;text-align:center;">
+    <br>熊本市災害情報の最終更新日時: {{cityinfo_last_updated_at}}
+  </div>
 	{{kumamotoshi}}
-
+  <div class="update-time u-warn" style="padding:10px;font-size:15px;text-align:center;">
+    <br>熊本水道局の最終更新日時: {{suido_last_updated_at}}
+  </div>
 	{{suido}}
 
 	<div style="margin-top: 40px;">
