@@ -3,6 +3,7 @@ require 'mechanize'
 class Kumamoto
   def initialize
     agent = Mechanize.new
+    agent.open_timeout = 5
     agent.read_timeout = 5
     @site = agent.get('http://www.city.kumamoto.jp/default.aspx?site=1')
   rescue
@@ -36,6 +37,7 @@ end
 class Kisyo
   def initialize
     agent = Mechanize.new
+    agent.open_timeout = 5
     agent.read_timeout = 5
     @site = agent.get('http://www.jma.go.jp/jp/quake/quake_singen_index.html')
   rescue
@@ -78,6 +80,7 @@ end
 class Suido
   def initialize
     agent = Mechanize.new
+    agent.open_timeout = 5
     agent.read_timeout = 5
     @site = agent.get('http://www.kumamoto-waterworks.jp/?page_id=2880')
   rescue
