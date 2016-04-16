@@ -19,7 +19,7 @@ class Kumamoto
   end
 
   def info_hash
-    nil unless @site
+    return nil unless @site
     array = []
     info_area.each do |area|
       tmp_hash = {}
@@ -58,7 +58,7 @@ class Kisyo
   end
 
   def info_hash
-    nil unless @site
+    return nil unless @site
     array = []
     info_area.each do |area|
       next if area.text.include?('情報発表日時')
@@ -104,7 +104,7 @@ class Suido
   end
 
   def info_hash
-    nil unless @site
+    return nil unless @site
     array = []
     e_links.each do |link|
 
