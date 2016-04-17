@@ -7,6 +7,28 @@ body {
   font-size: 18px;
   line-height: 1.6; }
 
+.btns {
+  text-align: center;
+  padding: 40px 20px; }
+  .btns .btn {
+    display: inline-block;
+    width: 300px;
+    margin-right: 30px;
+    height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    background: #DD4B39;
+    cursor: pointer;
+    text-decoration: none; }
+    .btns .btn:last-child {
+      margin-right: 0; }
+    .btns .btn.is_blue {
+      background: #4399FF; }
+    .btns .btn:hover {
+      opacity: .8; }
+
 .u-warn {
   color: #fc2e32; }
 
@@ -89,6 +111,12 @@ body {
   margin-top: 20px; }
 
 @media screen and (max-width: 768px) {
+  .btns {
+    text-align: center;
+    padding: 20px 0; }
+    .btns .btn {
+      margin-right: 0;
+      margin-top: 20px; }
   .area {
     margin-top: 40px;
     font-size: 15px; }
