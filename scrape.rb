@@ -224,6 +224,7 @@ class Html
   def suido
     html = '<div class="area waterworks">
               <div class="areaTitle">上下水道局<span class="u-warn" style="font-size:13px;"> 最終更新日時:{{suido_last_updated_at}}</span></div>
+                <div><a href="http://www.city.kumamoto.jp/kinkyu/pub/default.aspx?c_id=3" target="_blank">地震に伴う緊急情報一覧について</a></div>
                 <div class="area-info">'
     h = ''
     @suido.each do |i|
@@ -249,7 +250,7 @@ s3 = Aws::S3::Client.new(
 )
 
 s3.put_object(
-  bucket: 'kumamoto-jishin.info',
+  bucket: 'stagig.kumamoto-jishin.info',
   body: File.open('index.html'),
   key: 'index.html'
 )
