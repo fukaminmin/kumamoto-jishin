@@ -250,7 +250,7 @@ s3 = Aws::S3::Client.new(
 )
 
 s3.put_object(
-  bucket: 'stagig.kumamoto-jishin.info',
+  bucket: 'kumamoto-jishin.info',
   body: File.open('index.html'),
   key: 'index.html'
 )
