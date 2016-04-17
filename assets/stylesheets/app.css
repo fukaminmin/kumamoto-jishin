@@ -64,6 +64,30 @@ body {
   border: solid 1px #ccc !important;
   border-radius: 2px; }
 
+.frames .frame {
+  margin: 40px auto;
+  width: 100%;
+  max-width: 980px; }
+  .frames .frame .frame__title {
+    font-size: 25px;
+    font-weight: bold; }
+  .frames .frame .frame__content {
+    position: relative; }
+    .frames .frame .frame__content::before {
+      content: '';
+      display: block;
+      padding-top: 75%; }
+    .frames .frame .frame__content iframe {
+      border: solid 1px #ccc;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+
+.to-top {
+  margin-top: 20px; }
+
 @media screen and (max-width: 768px) {
   .area {
     margin-top: 40px;
@@ -83,4 +107,10 @@ body {
       .area .area-info .message {
         font-size: 13px; }
     .area:first-of-type {
-      margin-top: 0px; } }
+      margin-top: 0px; }
+  .frames .frame {
+    width: 95%; }
+    .frames .frame .frame__title {
+      font-size: 15px; }
+    .frames .frame .frame__content::before {
+      padding-top: 100%; } }
