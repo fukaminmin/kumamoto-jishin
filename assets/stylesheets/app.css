@@ -7,6 +7,12 @@ body {
   font-size: 18px;
   line-height: 1.6; }
 
+.notice {
+  color: red;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center; }
+
 .btns {
   text-align: center;
   padding: 40px 20px; }
