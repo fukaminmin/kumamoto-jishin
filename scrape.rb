@@ -210,7 +210,7 @@ class Html
     h = ''
     @kumamoto_info.each do |i|
       h += "<div class='area-info__message'>"
-      h += "<div class='day'>4月16日</div>"
+      h += "<div class='day'>#{Time.now.strftime('%m月%d日').to_s}</div>"
       h += "<div class='title'>#{i[:title]}</div>"
       h += "<div class='message'>#{i[:message]}</div>"
       h += '</div>'
