@@ -40,9 +40,9 @@ body {
     cursor: pointer;
     font-size: 15px;
     text-decoration: none; }
-    .btns .btn:first-child, .btns .btn:second-child {
+    .btns .btn:first-of-type, .btns .btn:nth-of-type(2) {
       margin-left: 0; }
-    .btns .btn:first-child {
+    .btns .btn:first-of-type {
       margin-bottom: 20px; }
     .btns .btn.is_blue {
       background: #4399FF; }
@@ -141,6 +141,8 @@ body {
     .btns .btn {
       margin-left: 0;
       margin-top: 20px; }
+      .btns .btn:first-of-type {
+        margin-bottom: 0px; }
   .area {
     margin-top: 40px;
     font-size: 15px; }
