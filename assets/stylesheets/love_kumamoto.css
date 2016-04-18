@@ -1,0 +1,87 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: auto;
+  font-family: 'HiraKakuProN-W3', 'ヒラギノ角ゴ ProN W3', DroidSerif, sans-serif; }
+
+#header {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 980px;
+  padding: 10px;
+  overflow: hidden;
+  font-size: 20px; }
+  #header a {
+    color: #fff; }
+
+.message {
+  margin-top: 40px;
+  text-align: center;
+  color: #fff; }
+  .message .m__title {
+    padding: 10px;
+    font-size: 20px; }
+  .message .m__subtitle {
+    padding: 10px;
+    padding-top: 0;
+    font-size: 25px; }
+  .message .m__text {
+    padding: 40px 0; }
+  .message .m__tweet {
+    margin-top: 30px;
+    transition: all .5s ease; }
+    .message .m__tweet:hover {
+      opacity: .8; }
+
+.twit-wrapper {
+  margin-top: 40px;
+  margin-bottom: 40px; }
+  .twit-wrapper #twitter-widget-0 {
+    border: none !important; }
+
+.images {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; }
+  .images .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    transition: all 2s ease; }
+    .images .image.is_active {
+      opacity: 1; }
+    .images .image.image--1 {
+      background-image: url(/assets/images/love_kumamoto/1.jpg); }
+    .images .image.image--2 {
+      background-image: url(/assets/images/love_kumamoto/2.jpg); }
+    .images .image.image--3 {
+      background-image: url(/assets/images/love_kumamoto/3.jpg); }
+    .images .image.image--4 {
+      background-image: url(/assets/images/love_kumamoto/4.jpg); }
+    .images .image.image--5 {
+      background-image: url(/assets/images/love_kumamoto/5.jpg); }
+
+@media screen and (max-width: 768px) {
+  #header a {
+    text-align: center;
+    color: #fff;
+    display: block;
+    float: none !important; }
+    #header a:nth-child(2) {
+      margin-top: 5px; }
+  .twit-wrapper #twitter-widget-0 {
+    width: 300px !important; }
+  .message .m__text {
+    padding: 40px 10px; } }

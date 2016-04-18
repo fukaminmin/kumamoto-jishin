@@ -40,12 +40,16 @@ body {
     cursor: pointer;
     font-size: 15px;
     text-decoration: none; }
-    .btns .btn:first-child {
+    .btns .btn:first-child, .btns .btn:second-child {
       margin-left: 0; }
+    .btns .btn:first-child {
+      margin-bottom: 20px; }
     .btns .btn.is_blue {
       background: #4399FF; }
     .btns .btn.is_purple {
       background: #6b4fe0; }
+    .btns .btn.is_pink {
+      background: #d83a59; }
     .btns .btn:hover {
       opacity: .8; }
 

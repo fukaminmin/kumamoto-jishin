@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<title>避難所、給水、配給、空いているスーパーなどについてgooglemapまとめ | 熊本地震 情報掲示板</title>
+<meta name="description" content="この掲示板は熊本市に必要な気象庁や県、市の情報をリアルタイムにまとめていきます。※随時更新受付中">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta property="og:title" content="避難所、給水、配給、空いているスーパーなどについてgooglemapまとめ | 熊本地震 情報掲示板" />
+<meta property="og:description" content="この掲示板は熊本市に必要な気象庁や県、市の情報をリアルタイムにまとめていきます。※随時更新受付中" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://kumamoto-jishin.info" />
+<meta property="og:image" content="http://kumamoto-jishin.info/assets/images/keijiban.jpg" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="http://kumamoto-jishin.info">
+<meta name="twitter:title" content="避難所、給水、配給、空いているスーパーなどについてgooglemapまとめ | 熊本地震 情報掲示板">
+<meta name="twitter:image" content="http://kumamoto-jishin.info/assets/images/keijiban.jpg">
+<meta name="twitter:description" content="この掲示板は熊本市に必要な気象庁や県、市の情報をリアルタイムにまとめていきます。※随時更新受付中">
+  <link rel="stylesheet" href="/assets/stylesheets/libs/normalize.css">
+  <link rel="stylesheet" href="/assets/stylesheets/app.css">
+  <link rel="stylesheet" href="/assets/stylesheets/love_kumamoto.css">
+  <script src="/assets/javascripts/jquery.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+</head>
+<body>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76521246-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <div class="content">
+    <header id="header">
+      <a href="/" title="top">< 熊本地震 情報掲示板トップへ</a>
+      <a href="https://camp-fire.jp/projects/view/6166" style="float:right;" target="_blank" title="top">募金はこちら</a>
+    </header>
+    <div class="message">
+      <div class="m__title">平成28年熊本地震</div>
+      <div class="m__subtitle">熊本に愛を伝えよう</div>
+      <div class="m__text">
+        2016年4月18日現在、未だに多くの被災者が避難所での生活を強いられており、その情報が整理されていません。<br>
+        被災者がより正しく迅速な情報を受け取り、多くの人が避難所の状況を知れるようにサイトを立ち上げました。<br>
+        もっと多くの人がこのサイトの存在に気づけるように、SNSでシェアしてくれませんか？<br>
+        あなたの愛とともに。
+      </div>
+      <a href="http://twitter.com/intent/tweet?text=大好き熊本！がまだせ熊本｜熊本に愛を伝えて応援しよう&amp;url=http://kumamoto-jishin.info/love_kumamoto&amp;hashtags=lovekumamoto"
+        onClick="window.open(encodeURI(decodeURI(this.href)),
+        'tweetwindow',
+        'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1, resizable=1'
+        ); return false;">
+        <img src="/assets/images/love_kumamoto/kumamon.png" alt="tweet" class="m__tweet" width="200">
+      </a>
+      <div class="twit-wrapper">
+        <a class="twitter-timeline" href="https://twitter.com/hashtag/lovekumamoto" data-widget-id="721969049798713344">#lovekumamoto のツイート</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+    </div>
+  </div>
+  <div class="images" id="js-image">
+    <div class="image image--1" id="js-first"></div>
+    <div class="image image--2"></div>
+    <div class="image image--3"></div>
+    <div class="image image--4"></div>
+    <div class="image image--5"></div>
+  </div>
+  <script>
+    var $first = $('#js-first'),
+    $bg = $first;
+
+    setTimeout(function(){
+      $first.addClass('is_active')
+    }, 1000)
+
+    setInterval(function(){
+      var next = $bg.next()[0] ? $bg.next() : $first;
+
+      $bg.removeClass('is_active')
+      next.addClass('is_active');
+
+      $bg = next;
+
+    }, 5000)
+
+  </script>
+</body>
+</html>
