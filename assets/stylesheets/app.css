@@ -46,7 +46,7 @@ body {
     cursor: pointer;
     font-size: 15px;
     text-decoration: none; }
-    .btns .btn:first-of-type, .btns .btn:nth-of-type(2) {
+    .btns .btn:first-of-type {
       margin-left: 0; }
     .btns .btn:first-of-type {
       margin-bottom: 20px; }
